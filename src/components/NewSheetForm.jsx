@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 
-import ToneSelector from './ToneSelector'
+import ToneSelector from './ToneSelector';
+import Upload from './Upload/Upload'
 
 const NewSheetForm = () => {
   const [trackName, setTrackName] = useState("");
@@ -8,12 +9,15 @@ const NewSheetForm = () => {
   const [tone, setTone] = useState("C");
 
   const toneHandler = (event) => {
-    const { tone } = event.target;
-    setTone(tone);
+    const { selectedTone } = event.target;
+    setTone(selectedTone);
   }
 
   return (
-    <ToneSelector toneHandler={toneHandler} />
+    <Fragment>
+      <ToneSelector toneHandler={toneHandler} />
+      <Upload />
+    </Fragment>
   );
 }
 
